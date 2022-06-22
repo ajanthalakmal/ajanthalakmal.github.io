@@ -2342,25 +2342,25 @@ portfolio
   width: 50%;
 }
 .art-grid.art-grid-2-col .art-grid-item .art-portfolio-item-frame.art-horizontal {
-  padding-bottom: 66.7%;
+  padding-bottom: 100%;
 }
 .art-grid.art-grid-2-col .art-grid-item .art-portfolio-item-frame.art-vertical {
-  padding-bottom: 140%;
+  padding-bottom: 100%;
 }
 .art-grid.art-grid-2-col .art-grid-item .art-portfolio-item-frame.art-square {
-  padding-bottom: 90%;
+  padding-bottom: 100%;
 }
 .art-grid.art-grid-3-col .art-grid-item {
   width: 33.3333%;
 }
 .art-grid.art-grid-3-col .art-grid-item .art-portfolio-item-frame.art-horizontal {
-  padding-bottom: 65%;
+  padding-bottom: 100%;
 }
 .art-grid.art-grid-3-col .art-grid-item .art-portfolio-item-frame.art-vertical {
-  padding-bottom: 140%;
+  padding-bottom: 100%;
 }
 .art-grid.art-grid-3-col .art-grid-item .art-portfolio-item-frame.art-square {
-  padding-bottom: 90%;
+  padding-bottom: 100%;
 }
 
 /* ----- touch device ----- */
