@@ -1,0 +1,739 @@
+/* ==========================================================================
+   BK PARADISE & BK DEVOPS // FUTURISTIC CYBER COMMAND DECK THEME
+   Engineered for Ajantha Lakmal - Software Engineer & Operator-Engineer
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&family=Orbitron:wght@500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --cyber-bg-void: #05060A;
+  --cyber-bg-surface: #090C15;
+  --cyber-bg-card: rgba(12, 16, 28, 0.72);
+  --cyber-bg-card-hover: rgba(18, 24, 42, 0.88);
+  --cyber-bg-glass: rgba(15, 20, 35, 0.65);
+  
+  --cyber-cyan: #00F0FF;
+  --cyber-cyan-glow: 0 0 25px rgba(0, 240, 255, 0.45);
+  --cyber-purple: #9D00FF;
+  --cyber-purple-glow: 0 0 25px rgba(157, 0, 255, 0.45);
+  --cyber-emerald: #00FF9D;
+  --cyber-emerald-glow: 0 0 20px rgba(0, 255, 157, 0.45);
+  --cyber-amber: #FFB800;
+  --cyber-amber-glow: 0 0 20px rgba(255, 184, 0, 0.45);
+  --cyber-pink: #FF0055;
+  
+  --cyber-border: rgba(0, 240, 255, 0.16);
+  --cyber-border-bright: rgba(0, 240, 255, 0.5);
+  --cyber-text-main: #E2E8F0;
+  --cyber-text-dim: #94A3B8;
+  --cyber-text-cyan: #38BDF8;
+  
+  --font-heading: 'Orbitron', 'Space Grotesk', sans-serif;
+  --font-body: 'Space Grotesk', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+/* --------------------------------------------------------------------------
+   Global Overrides & Base Atmosphere
+   -------------------------------------------------------------------------- */
+body {
+  font-family: var(--font-body) !important;
+  background-color: var(--cyber-bg-void) !important;
+  color: var(--cyber-text-main) !important;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading) !important;
+  letter-spacing: 0.04em;
+}
+
+/* Cyber Canvas Background */
+#cyber-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.45;
+}
+
+/* Ambient Cyber Grid Overlay */
+.art-app-wrapper::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: 
+    linear-gradient(rgba(0, 240, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 240, 255, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Subtle CRT Scanline effect */
+.art-app-wrapper::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.12),
+    rgba(0, 0, 0, 0.12) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0.6;
+}
+
+.art-app-container {
+  background: transparent !important;
+  position: relative;
+  z-index: 3;
+}
+
+/* --------------------------------------------------------------------------
+   Sidebar (Info Bar) Futuristic HUD Treatment
+   -------------------------------------------------------------------------- */
+.art-info-bar {
+  background: rgba(9, 12, 21, 0.94) !important;
+  backdrop-filter: blur(16px);
+  border-right: 1px solid var(--cyber-border);
+  box-shadow: 10px 0 35px rgba(0, 0, 0, 0.7);
+}
+
+.art-info-bar-frame {
+  background: transparent !important;
+}
+
+/* Holographic Avatar Reticle */
+.art-avatar {
+  position: relative;
+  margin: 0 auto 20px !important;
+  width: 110px !important;
+  height: 110px !important;
+  border-radius: 50%;
+  padding: 5px;
+  background: linear-gradient(135deg, var(--cyber-cyan), var(--cyber-purple), var(--cyber-amber));
+  box-shadow: var(--cyber-cyan-glow);
+}
+
+.art-avatar::before {
+  content: "";
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  right: -8px;
+  bottom: -8px;
+  border-radius: 50%;
+  border: 1px dashed rgba(0, 240, 255, 0.5);
+  animation: cyber-spin 20s linear infinite;
+  pointer-events: none;
+}
+
+.art-avatar::after {
+  content: "";
+  position: absolute;
+  top: -14px;
+  left: -14px;
+  right: -14px;
+  bottom: -14px;
+  border-radius: 50%;
+  border: 1px solid rgba(157, 0, 255, 0.25);
+  pointer-events: none;
+}
+
+@keyframes cyber-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.art-avatar img {
+  border-radius: 50%;
+  border: 2px solid #05060A !important;
+}
+
+.art-lamp-light .art-available-lamp {
+  background: var(--cyber-emerald) !important;
+  box-shadow: var(--cyber-emerald-glow) !important;
+}
+
+.art-name {
+  font-family: var(--font-heading) !important;
+  font-weight: 700 !important;
+  color: #FFFFFF !important;
+  text-shadow: 0 0 12px rgba(0, 240, 255, 0.6);
+  letter-spacing: 0.05em;
+}
+
+.art-sm-text {
+  font-family: var(--font-mono) !important;
+  font-size: 11px !important;
+  color: var(--cyber-text-dim) !important;
+}
+
+/* Cyber Skills & Badges */
+.art-hard-skills-item .art-skill-heading h6 {
+  font-family: var(--font-mono) !important;
+  font-size: 11px !important;
+  color: var(--cyber-cyan) !important;
+}
+
+.art-line-progress {
+  background: rgba(255, 255, 255, 0.06) !important;
+  border-radius: 3px;
+  overflow: hidden;
+  border: 1px solid rgba(0, 240, 255, 0.15);
+}
+
+.art-line-progress svg path:last-child {
+  stroke: url(#cyber-gradient) !important;
+  stroke: var(--cyber-cyan) !important;
+  filter: drop-shadow(0 0 4px var(--cyber-cyan));
+}
+
+.art-knowledge-list li {
+  font-family: var(--font-mono) !important;
+  font-size: 11px !important;
+  color: #CBD5E1 !important;
+}
+
+.art-knowledge-list li:before {
+  color: var(--cyber-cyan) !important;
+  content: "▸ " !important;
+}
+
+.art-ls-social a {
+  color: var(--cyber-text-dim) !important;
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.art-ls-social a:hover {
+  color: var(--cyber-cyan) !important;
+  transform: translateY(-3px) scale(1.15);
+  filter: drop-shadow(0 0 8px var(--cyber-cyan));
+}
+
+/* --------------------------------------------------------------------------
+   Top Bar & HUD System Status Strip
+   -------------------------------------------------------------------------- */
+.art-top-bg {
+  background: #05060A !important;
+}
+
+.art-top-bg-overlay {
+  background: radial-gradient(circle at 50% 0%, rgba(0, 240, 255, 0.12) 0%, transparent 70%),
+              radial-gradient(circle at 100% 20%, rgba(157, 0, 255, 0.08) 0%, transparent 60%) !important;
+}
+
+.cyber-hud-strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 8px 16px;
+  margin-bottom: 24px;
+  background: rgba(10, 15, 26, 0.8);
+  border: 1px solid var(--cyber-border);
+  border-radius: 6px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--cyber-text-dim);
+  backdrop-filter: blur(10px);
+}
+
+.cyber-hud-strip .status-live {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--cyber-emerald);
+  font-weight: 700;
+}
+
+.cyber-hud-strip .status-live-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--cyber-emerald);
+  box-shadow: var(--cyber-emerald-glow);
+  animation: pulse-dot 1.5s infinite;
+}
+
+@keyframes pulse-dot {
+  0% { transform: scale(0.9); opacity: 0.7; }
+  50% { transform: scale(1.3); opacity: 1; }
+  100% { transform: scale(0.9); opacity: 0.7; }
+}
+
+/* --------------------------------------------------------------------------
+   Hero Banner — Holographic Command Deck
+   -------------------------------------------------------------------------- */
+.art-banner {
+  background: linear-gradient(135deg, rgba(10, 14, 25, 0.95), rgba(5, 7, 12, 0.98)) !important;
+  border: 1px solid var(--cyber-border) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(0, 240, 255, 0.2) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.art-banner::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(0, 240, 255, 0.15) 0%, rgba(157, 0, 255, 0.05) 50%, transparent 70%);
+  pointer-events: none;
+}
+
+/* Corner Cyber HUD Accents */
+.art-banner::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--cyber-cyan), var(--cyber-purple), transparent);
+}
+
+.cyber-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  background: rgba(0, 240, 255, 0.08);
+  border: 1px solid var(--cyber-cyan);
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--cyber-cyan);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+  margin-bottom: 16px;
+}
+
+.art-banner-title h1 {
+  font-size: 38px !important;
+  line-height: 1.25 !important;
+  background: linear-gradient(135deg, #FFFFFF 0%, #E2E8F0 50%, var(--cyber-cyan) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 30px rgba(0, 240, 255, 0.35);
+}
+
+.art-lg-text.art-code {
+  font-family: var(--font-mono) !important;
+  color: #A0AEC0 !important;
+  font-size: 15px !important;
+}
+
+.art-lg-text.art-code .txt-rotate {
+  color: var(--cyber-amber) !important;
+  font-weight: 700;
+  text-shadow: 0 0 10px rgba(255, 184, 0, 0.5);
+}
+
+/* Cyber Buttons */
+.art-btn, .cyber-btn {
+  font-family: var(--font-heading) !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: rgba(0, 240, 255, 0.08) !important;
+  border: 1px solid var(--cyber-cyan) !important;
+  color: #FFFFFF !important;
+  border-radius: 6px !important;
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.25) !important;
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.art-btn:hover, .cyber-btn:hover {
+  background: var(--cyber-cyan) !important;
+  color: #05060A !important;
+  box-shadow: var(--cyber-cyan-glow) !important;
+  transform: translateY(-2px);
+}
+
+.art-btn span {
+  position: relative;
+  z-index: 2;
+}
+
+/* --------------------------------------------------------------------------
+   Counters & Metric Deck
+   -------------------------------------------------------------------------- */
+.art-counter-frame {
+  background: var(--cyber-bg-card) !important;
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--cyber-border);
+  border-radius: 8px !important;
+  padding: 22px 16px !important;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.art-counter-frame:hover {
+  border-color: var(--cyber-cyan);
+  box-shadow: var(--cyber-cyan-glow);
+  transform: translateY(-4px);
+}
+
+.art-counter-box {
+  font-family: var(--font-heading) !important;
+  font-size: 32px !important;
+  font-weight: 800 !important;
+  color: var(--cyber-cyan) !important;
+  text-shadow: 0 0 15px rgba(0, 240, 255, 0.6);
+}
+
+.art-counter-plus {
+  color: var(--cyber-amber) !important;
+}
+
+.art-counter-frame h6 {
+  font-family: var(--font-mono) !important;
+  font-size: 11px !important;
+  color: var(--cyber-text-dim) !important;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 6px;
+}
+
+/* --------------------------------------------------------------------------
+   BK Paradise Ecosystem Constellation Section
+   -------------------------------------------------------------------------- */
+.cyber-ecosystem-deck {
+  margin: 30px 0;
+}
+
+.cyber-grid-apps {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.cyber-app-card {
+  display: block;
+  background: var(--cyber-bg-card);
+  border: 1px solid var(--cyber-border);
+  border-radius: 8px;
+  padding: 18px 20px;
+  position: relative;
+  overflow: hidden;
+  text-decoration: none !important;
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  backdrop-filter: blur(12px);
+}
+
+.cyber-app-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100%;
+  background: var(--cyber-cyan);
+  opacity: 0.6;
+  transition: all 0.3s ease;
+}
+
+.cyber-app-card:hover {
+  background: var(--cyber-bg-card-hover);
+  border-color: var(--cyber-cyan);
+  box-shadow: 0 8px 30px rgba(0, 240, 255, 0.25);
+  transform: translateY(-4px);
+}
+
+.cyber-app-card:hover::before {
+  width: 5px;
+  box-shadow: var(--cyber-cyan-glow);
+}
+
+.cyber-app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.cyber-app-title {
+  font-family: var(--font-heading);
+  font-size: 14px;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+.cyber-app-status {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 3px;
+  background: rgba(0, 255, 157, 0.1);
+  color: var(--cyber-emerald);
+  border: 1px solid rgba(0, 255, 157, 0.3);
+}
+
+.cyber-app-desc {
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--cyber-text-dim);
+  margin-bottom: 12px;
+}
+
+.cyber-app-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--cyber-text-cyan);
+}
+
+/* --------------------------------------------------------------------------
+   Cards (Services, Works, History, Contact)
+   -------------------------------------------------------------------------- */
+.art-card, .art-a.art-service-icon-box, .art-timeline-content {
+  background: var(--cyber-bg-card) !important;
+  backdrop-filter: blur(14px);
+  border: 1px solid var(--cyber-border) !important;
+  border-radius: 10px !important;
+  transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.art-card:hover, .art-a.art-service-icon-box:hover, .art-timeline-content:hover {
+  background: var(--cyber-bg-card-hover) !important;
+  border-color: var(--cyber-cyan) !important;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.6), 0 0 20px rgba(0, 240, 255, 0.2) !important;
+  transform: translateY(-4px);
+}
+
+.art-service-ib-content h5 {
+  font-family: var(--font-heading) !important;
+  font-size: 15px !important;
+  color: #FFFFFF !important;
+}
+
+.art-service-ib-content .mb-15 {
+  color: var(--cyber-text-dim) !important;
+  font-size: 13px !important;
+  line-height: 1.6;
+}
+
+/* Filter Bar Cyber Treatment */
+.art-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.art-filter a {
+  font-family: var(--font-mono) !important;
+  font-size: 11px !important;
+  padding: 6px 14px !important;
+  border-radius: 20px !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  background: rgba(255, 255, 255, 0.03) !important;
+  color: var(--cyber-text-dim) !important;
+  transition: all 0.25s ease;
+}
+
+.art-filter a:hover {
+  color: var(--cyber-cyan) !important;
+  border-color: var(--cyber-cyan) !important;
+  box-shadow: 0 0 12px rgba(0, 240, 255, 0.3);
+}
+
+.art-filter a.art-current {
+  color: #05060A !important;
+  background: var(--cyber-cyan) !important;
+  border-color: var(--cyber-cyan) !important;
+  font-weight: 700 !important;
+  box-shadow: var(--cyber-cyan-glow) !important;
+}
+
+/* Work Gallery Cards */
+.art-grid-item {
+  transition: transform 0.35s ease;
+}
+
+.art-portfolio-item-frame {
+  border-radius: 8px !important;
+  border: 1px solid var(--cyber-border) !important;
+  overflow: hidden;
+  background: #000000 !important;
+}
+
+.art-portfolio-item-frame img {
+  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.5s ease;
+}
+
+.art-grid-item:hover .art-portfolio-item-frame img {
+  transform: scale(1.06);
+  filter: brightness(1.1);
+}
+
+.art-item-description {
+  background: var(--cyber-bg-card);
+  padding: 16px !important;
+  border-radius: 0 0 8px 8px;
+  border: 1px solid var(--cyber-border);
+  border-top: none;
+}
+
+.art-item-description h5 {
+  font-family: var(--font-heading) !important;
+  font-size: 15px !important;
+  color: #FFFFFF !important;
+}
+
+.art-item-description .mb-15 {
+  font-size: 12px !important;
+  line-height: 1.6;
+  color: var(--cyber-text-dim) !important;
+}
+
+/* Category Indicators for Works */
+.art-grid-item.bkparadise .art-item-description h5::after {
+  content: " [PARADISE]";
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: var(--cyber-cyan);
+  font-weight: 700;
+}
+
+.art-grid-item.eazysoft .art-item-description h5::after {
+  content: " [EAZYSOFT]";
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: var(--cyber-emerald);
+  font-weight: 700;
+}
+
+/* --------------------------------------------------------------------------
+   Timeline & History Section
+   -------------------------------------------------------------------------- */
+.art-timeline-mark {
+  background: var(--cyber-cyan) !important;
+  box-shadow: var(--cyber-cyan-glow) !important;
+}
+
+.art-timeline-mark-light {
+  background: rgba(0, 240, 255, 0.2) !important;
+}
+
+.art-timeline-item::before {
+  background: rgba(0, 240, 255, 0.15) !important;
+}
+
+.art-date {
+  font-family: var(--font-mono) !important;
+  color: var(--cyber-cyan) !important;
+  background: rgba(0, 240, 255, 0.08) !important;
+  border: 1px solid rgba(0, 240, 255, 0.25) !important;
+  border-radius: 4px;
+  padding: 3px 10px;
+}
+
+/* --------------------------------------------------------------------------
+   Contact Form Cyber Inputs
+   -------------------------------------------------------------------------- */
+.art-input {
+  background: rgba(8, 11, 20, 0.8) !important;
+  border: 1px solid var(--cyber-border) !important;
+  color: #FFFFFF !important;
+  font-family: var(--font-mono) !important;
+  border-radius: 6px !important;
+  transition: all 0.3s ease;
+}
+
+.art-input:focus {
+  border-color: var(--cyber-cyan) !important;
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.35) !important;
+  background: rgba(12, 18, 32, 0.95) !important;
+}
+
+/* --------------------------------------------------------------------------
+   Floating Futuristic Command Dock
+   -------------------------------------------------------------------------- */
+.cyber-command-dock {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  background: rgba(8, 12, 22, 0.88);
+  border: 1px solid var(--cyber-cyan);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.85), 0 0 25px rgba(0, 240, 255, 0.35);
+  border-radius: 40px;
+  backdrop-filter: blur(20px);
+  z-index: 9999;
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.cyber-dock-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  color: #CBD5E1;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  text-decoration: none !important;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.cyber-dock-item:hover {
+  background: rgba(0, 240, 255, 0.15);
+  color: var(--cyber-cyan);
+  box-shadow: 0 0 12px rgba(0, 240, 255, 0.4);
+  transform: translateY(-2px);
+}
+
+.cyber-dock-item.active {
+  background: var(--cyber-cyan);
+  color: #05060A;
+  font-weight: 700;
+  box-shadow: var(--cyber-cyan-glow);
+}
+
+@media (max-width: 768px) {
+  .cyber-command-dock {
+    bottom: 12px;
+    padding: 6px 8px;
+    gap: 4px;
+    max-width: 95vw;
+    overflow-x: auto;
+  }
+  .cyber-dock-item {
+    padding: 5px 10px;
+    font-size: 10px;
+  }
+  .cyber-dock-label {
+    display: none;
+  }
+}
