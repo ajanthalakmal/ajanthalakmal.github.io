@@ -1,12 +1,5 @@
 <?php
-
-$recepient = "lakmalajantha@gmail.com";
-$sitename = "Ajantha Lakmal CV";
-
-$name = trim($_POST["name"]);
-$email = trim($_POST["email"]);
-$text = trim($_POST["text"]);
-$message = "Name: $name \nEmail: $email \nText: $text";
-
-$pagetitle = "New message from the \"$sitename\"";
-mail($recepient, $pagetitle, $message, "Content-type: text/plain; charset=\"utf-8\"\n From: $recepient");
+// Deprecated: GitHub Pages only serves static files and does not execute PHP.
+// Contact form submissions are handled directly via client-side AJAX using Formsubmit/Web3Forms.
+header("Location: /");
+exit;

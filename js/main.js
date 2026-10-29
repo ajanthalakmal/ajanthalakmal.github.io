@@ -251,31 +251,58 @@ $(function() {
     }
   });
 
-  $("#form").submit(function() {
-    $.ajax({
-      type: "POST",
-      url: "mail.php",
-      data: $(this).serialize()
-    }).done(function() {
+  // Dynamic Year and Age updates
+  function updateDynamicContent() {
+    var yearElem = document.getElementById('current-year');
+    if (yearElem) {
+      yearElem.textContent = new Date().getFullYear();
+    }
+    var ageElem = document.getElementById('user-age');
+    if (ageElem) {
+      var currentYear = new Date().getFullYear();
+      ageElem.textContent = currentYear - 1997;
+    }
+  }
+  updateDynamicContent();
 
-      var tl = anime.timeline({
-        easing: 'easeOutExpo',
+  function bindContactForm() {
+    $('#form').off('submit').on('submit', function(e) {
+      e.preventDefault();
+      var $form = $(this);
+      var formAction = $form.attr('action') || 'https://formsubmit.co/ajax/lakmalajantha@gmail.com';
+      var $submitBtn = $form.find('.art-submit');
+      $submitBtn.prop('disabled', true).find('span').text('Sending...');
+
+      $.ajax({
+        type: 'POST',
+        url: formAction,
+        data: $form.serialize(),
+        dataType: 'json'
+      }).done(function() {
+        var tl = anime.timeline({
+          easing: 'easeOutExpo',
+        });
+
+        tl
+          .add({
+            targets: '.art-submit',
+            opacity: 0,
+            scale: .5,
+          })
+          .add({
+            targets: '.art-success',
+            scale: 1,
+            height: '45px',
+          });
+        $form[0].reset();
+      }).fail(function() {
+        alert('Could not send message automatically. Please contact directly at lakmalajantha@gmail.com');
+        $submitBtn.prop('disabled', false).find('span').text('Send message');
       });
-
-      tl
-        .add({
-          targets: '.art-submit',
-          opacity: 0,
-          scale: .5,
-        })
-        .add({
-          targets: '.art-success',
-          scale: 1,
-          height: '45px',
-        })
+      return false;
     });
-    return false;
-  });
+  }
+  bindContactForm();
 
   // portfolio filter
   $('.art-filter a').on('click', function() {
